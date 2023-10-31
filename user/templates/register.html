@@ -12,6 +12,14 @@
 	<div>
     <h1 class="h1 text-info ">Cadastre-se</h1> 
 
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {{ message.tags }} mt-3 ">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}  
+
     <form action="{% url 'register' %}" method='POST' class="mt-5 col-4">{% csrf_token %}
         <div>
           <label class="form-label text-light fs-5" for="name">Nome</label>
@@ -35,7 +43,8 @@
         </div>
       </div>
 
-      <button class="btn btn-primary " type="submit">Salvar</button>
+      <button class="btn btn-primary me-3 " type="submit">Salvar</button>
+      <a class="btn btn-danger" href="/" >Cancelar</a>
     </form>
   </div>
 {% endblock %}

@@ -29,5 +29,11 @@
       <button class="btn btn-primary " type="submit">Entrar</button>
       <a class="btn btn-info " href='{% url 'register' %}'>Cadastrar-se</a>
     </div>
+
+    {% if message %}
+      <div class="alert alert-success mt-3 ">
+        Usuário cadastro com sucesso
+      </div>
+    {% endif %}  
   </form>
 {% endblock %}
