@@ -3,10 +3,24 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.messages import constants
 from django.contrib import messages
-import time
+from django.contrib.auth import authenticate, login as auth_login
 
 def login(request):
-  return render(request, 'login.html')
+  if request.method == 'GET':
+    return render(request, 'login.html')
+  
+  elif request.method == 'POST':
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    
+    user = authenticate(username=email, password=password)
+  
+    if user:
+      auth_login(request, user)
+      return redirect('/agendamentos/seus_agendamentos')
+    else:
+      messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos.')
+      return redirect('/')
 
 def register(request):
   if request.method == 'GET':
@@ -32,16 +46,16 @@ def register(request):
     
     try:
       user = User.objects.create_user(
-        username=name, email=email, password=password
+        username=email, email=email, password=password, first_name=name
       )
       
       user.save()
     
-      sucssefully = True
+      successfully = True
       
     except:
-      sucssefully = False
+      successfully = False
       messages.add_message(request, constants.ERROR, 'Erro ao cadastrar o usuário.')
     
-    return render(request, 'login.html', {'message': sucssefully})
+    return render(request, 'login.html', {'register_message': successfully})
   

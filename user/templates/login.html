@@ -14,10 +14,10 @@
     <h1 class="h1 text-primary ">Acessar</h1>
   </div>
 
-  <form class="col-sm-3 my-5 d-flex flex-column gap-2 ">
+  <form action="{% url 'login' %}" method="POST" class="col-sm-3 my-5 d-flex flex-column gap-2 ">{% csrf_token %}
     <div>
-      <label class="form-label text-light" for="e-mail">E-mail</label>
-      <input class="form-control" type='email' placeholder='Digite seu e-mail' id="e-mail" name="e-mail" required />
+      <label class="form-label text-light" for="email">E-mail</label>
+      <input class="form-control" type='email' placeholder='Digite seu e-mail' id="email" name="email" required />
     </div>
 
     <div>
@@ -30,10 +30,16 @@
       <a class="btn btn-info " href='{% url 'register' %}'>Cadastrar-se</a>
     </div>
 
-    {% if message %}
+    {% if register_message %}
       <div class="alert alert-success mt-3 ">
         Usuário cadastro com sucesso
       </div>
     {% endif %}  
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+      {% endfor %} 
+    {% endif %}
   </form>
 {% endblock %}

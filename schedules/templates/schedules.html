@@ -1,0 +1,90 @@
+{% extends "base/global.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+   <link rel="stylesheet" href="{% static 'global/global.css' %}" />
+
+{% endblock 'head' %}
+
+
+{% block 'conteudo' %}
+	<div class="py-sm-3 px-sm-5 ">
+
+      <div class="d-flex justify-content-between align-items-center mb-4 w-75 gap-5 gap-sm-0 ">
+         <h2 class="h2 text-info">Agendamentos</h2>
+         <a href="#" class="btn btn-primary  ">Novo agendamento</a>
+      </div>
+
+      <table class="d-none d-sm-block table table-hover table-dark table-borderless table-responsive align-middle w-75 fs-5 ">
+         <thead>
+            <tr>
+               <th scope="col" style="width: 25%;">Data</th>
+               <th scope="col" style="width: 25%;">Horário</th>
+               <th scope="col" style="width: 25%;">Corte</th>
+               <th scope="col" style="width: 25%;">Preço</th>
+               <th scope="col"></th>
+            </tr>
+         </thead>
+
+         <tbody>
+            <tr>
+               <td>01/11/2023</td>
+               <td>12:00</td>
+               <td>R$ 60</td>
+               <td >Cabelo + Sobrancelha</td>
+               <td ><button class="btn btn-danger fs-5">Cancelar</button></td>
+            </tr>
+
+            <tr>
+               <td>12/11/2023</td>
+               <td>18:00</td>
+               <td>R$ 60</td>
+               <td >Cabelo + Barba</td>
+               <td><button class="btn btn-danger fs-5">Cancelar</button></td>
+            </tr>
+
+            <tr>
+               <td>15/11/2023</td>
+               <td>14:00</td>
+               <td>R$ 60</td>
+               <td >Barba</td>
+               <td><button class="btn btn-danger fs-5">Cancelar</button></td>
+            </tr>
+         </tbody>
+      </table>
+
+      <div class="card bg-dark text-white mb-3 d-sm-none">
+         <div class="card-header"><strong>Barba + Sobrancelha</strong></div>
+
+         <div class="card-body d-sm-none">
+            <p class="card-text">Data: 11/11/2023</p>
+            <p class="card-text">Horário: 12:00</p>
+            <p class="card-text">R$ 60,00</p>
+            <button class="btn btn-danger ">Cancelar</button>
+         </div>
+      </div>
+
+      <div class="card bg-dark text-white mb-3 d-sm-none">
+         <div class="card-header"><strong>Barba + Sobrancelha</strong></div>
+
+         <div class="card-body d-sm-none">
+            <p class="card-text">Data: 11/11/2023</p>
+            <p class="card-text">Horário: 12:00</p>
+            <p class="card-text">R$ 60,00</p>
+            <button class="btn btn-danger ">Cancelar</button>
+         </div>
+      </div>
+
+      <div class="card bg-dark text-white mb-3 d-sm-none">
+         <div class="card-header"><strong>Barba + Sobrancelha</strong></div>
+
+         <div class="card-body d-sm-none">
+            <p class="card-text">Data: 11/11/2023</p>
+            <p class="card-text">Horário: 12:00</p>
+            <p class="card-text">R$ 60,00</p>
+            <button class="btn btn-danger ">Cancelar</button>
+         </div>
+      </div>
+   </div>
+{% endblock %}
