@@ -1,0 +1,33 @@
+{% extends "base/global.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+  <link href="{% static 'global/global.css' %}" rel="stylesheet" />
+
+{% endblock 'head' %}
+
+
+{% block 'conteudo' %}
+	<div class="d-flex align-items-center ">
+    <img style="width: 150px;" class="logo" src="{% static 'assets/logo1.png' %}" alt='Jorge Barber' title="Jorge Barber" />
+    <h1 class="h1 text-primary ">Acessar</h1>
+  </div>
+
+  <form class="col-3 my-5 d-flex flex-column gap-2 ">
+    <div>
+      <label class="form-label text-light" for="e-mail">E-mail</label>
+      <input class="form-control" type='email' placeholder='Digite seu e-mail' id="e-mail" name="e-mail" required />
+    </div>
+
+    <div>
+      <label class="form-label text-light" for="password">Senha</label>
+      <input class="form-control" type='password' placeholder='Digite sua senha' id="password" name="password" required />
+    </div>
+
+    <div class="mt-3 ">
+      <button class="btn btn-primary " type="submit">Entrar</button>
+      <a class="btn btn-info " href='{% url 'cadastro' %}'>Cadastrar-se</a>
+    </div>
+  </form>
+{% endblock %}
