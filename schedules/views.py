@@ -13,7 +13,6 @@ def schedules(request):
   if request.method == 'GET':
     user = request.user
     schedules = Schedules.objects.filter(user_id=user.id)
-    print(schedules)
     return render(request, 'schedules.html', {'schedules': schedules})
 
 @login_required
@@ -35,15 +34,15 @@ def new_schedule(request):
     
     price = 0
     
-    if hair != 'None':
+    if hair != None:
       has_hair = True
       price += 30
       
-    if beard != 'None':
+    if beard != None:
       has_beard = True
       price += 15
       
-    if eyebrow != 'None':
+    if eyebrow != None:
       has_eyebrow = True
       price += 10
       
@@ -57,7 +56,7 @@ def new_schedule(request):
     new_schedule = Schedules.objects.create(
       date=date,
       time=time,
-      user_id=user,
+      user=user,
       hair=has_hair,
       eyebrow=has_eyebrow,
       beard=has_beard,
@@ -68,3 +67,15 @@ def new_schedule(request):
     
     return redirect('/agendamentos/seus_agendamentos')
     
+@login_required
+def cancel_schedule(request, schedule_id):
+  schedule_to_remove = Schedules.objects.get(id=schedule_id)
+  
+  if not  schedule_to_remove.user == request.user:
+    messages.add_message(request, constants.ERROR, 'Esse agendamento não é seu.')
+    return redirect('/agendamentos/seus_agendamentos')
+    
+  schedule_to_remove.delete()
+    
+  return redirect('/agendamentos/seus_agendamentos')
+  

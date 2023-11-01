@@ -7,8 +7,8 @@ class Schedules(models.Model):
   beard = models.BooleanField(default=False)
   date = models.DateField()
   time = models.CharField(max_length=255)
-  user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+  user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
   price = models.IntegerField()
   
   def __str__(self) -> str:
-    return f'{self.user_id}' 
+    return f'{self.user}' 
