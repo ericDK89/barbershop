@@ -1,6 +1,6 @@
-<p align="center">
-  <img alt="Barbershop_1" src="https://github.com/ericDK89/barbershop/assets/68076508/268ce448-b856-4ab1-990c-dad545fd0f6e">
+<p>
   <img alt="Barbershop_2" src="https://github.com/ericDK89/barbershop/assets/68076508/bef2f6ae-1ede-438e-8cb7-1dbea70d1203">
+  <img alt="Barbershop_1" src="https://github.com/ericDK89/barbershop/assets/68076508/268ce448-b856-4ab1-990c-dad545fd0f6e"> 
 </p>
 
 <br>
