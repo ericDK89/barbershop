@@ -13,46 +13,32 @@
 
       <div class="d-flex justify-content-between align-items-center mb-4 w-75 gap-5 gap-sm-0 ">
          <h2 class="h2 text-info">Agendamentos</h2>
-         <a href="#" class="btn btn-primary  ">Novo agendamento</a>
+         <a href="novo_agendamento" class="btn btn-primary ">Novo agendamento</a>
       </div>
 
       <table class="d-none d-sm-block table table-hover table-dark table-borderless table-responsive align-middle w-75 fs-5 ">
          <thead>
             <tr>
-               <th scope="col" style="width: 25%;">Data</th>
-               <th scope="col" style="width: 25%;">Horário</th>
-               <th scope="col" style="width: 25%;">Corte</th>
-               <th scope="col" style="width: 25%;">Preço</th>
+               <th scope="col" style="width: 33%;">Data</th>
+               <th scope="col" style="width: 33%;">Horário</th>
+               <th scope="col" style="width: 33%;">Preço</th>
                <th scope="col"></th>
             </tr>
          </thead>
 
          <tbody>
-            <tr>
-               <td>01/11/2023</td>
-               <td>12:00</td>
-               <td>R$ 60</td>
-               <td >Cabelo + Sobrancelha</td>
-               <td ><button class="btn btn-danger fs-5">Cancelar</button></td>
-            </tr>
-
-            <tr>
-               <td>12/11/2023</td>
-               <td>18:00</td>
-               <td>R$ 60</td>
-               <td >Cabelo + Barba</td>
-               <td><button class="btn btn-danger fs-5">Cancelar</button></td>
-            </tr>
-
-            <tr>
-               <td>15/11/2023</td>
-               <td>14:00</td>
-               <td>R$ 60</td>
-               <td >Barba</td>
-               <td><button class="btn btn-danger fs-5">Cancelar</button></td>
-            </tr>
+            {% for schedule in schedules  %}
+               <tr>
+                  <td>{{ schedule.date|date:"d/m/Y"}}</td>
+                  <td>{{ schedule.time }}</td>
+                  <td>R$ {{ schedule.price }}</td>
+                  <td><button class="btn btn-danger fs-5">Cancelar</button></td>
+               </tr>
+            {% endfor %}
          </tbody>
       </table>
+
+      {% comment %} Mobile screen {% endcomment %}
 
       <div class="card bg-dark text-white mb-3 d-sm-none">
          <div class="card-header"><strong>Barba + Sobrancelha</strong></div>

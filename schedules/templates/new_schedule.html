@@ -1,0 +1,72 @@
+{% extends "base/global.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+   <link rel="stylesheet" href="{% static 'global/global.css' %}" />
+
+{% endblock 'head' %}
+
+
+{% block 'conteudo' %}
+
+<div class="d-flex">
+    <form action="{% url 'new_schedule' %}" method="POST">{% csrf_token %}
+        <h2 class="h1 text-info">Agendar um corte</h2>
+
+        <p class="fs-5 text-white ">Selecione um ou mais cortes que deseja</p>
+
+        <div class="card bg-dark text-white">
+            <div class="card-body fs-4">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hair" name="hair">
+                    <label class="form-check-label" for="hair">Cabelo - R$30,00</label>
+                </div>
+
+                <div class="form-check ">
+                    <input type="checkbox" class="form-check-input" id="beard" name="beard">
+                    <label class="form-check-label" for="beard">Barba - R$15,00</label>
+                </div>
+
+                <div class="form-check ">
+                    <input type="checkbox" class="form-check-input" id="eyebrow" name="eyebrow">
+                    <label class="form-check-label" for="eyebrow">Sobrancelha - R$10,00</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <div class="d-flex mb-3 align-items-start gap-2 ">
+                <p class='text-white '>Selecione o dia: </p>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="d-flex align-items-start gap-2 " required>
+                <p class='text-white '>Selecione um horário: </p>
+                <select name="time">
+                    <option value="10:00 - 11:00">10:00 - 11:00</option>
+                    <option value="11:00 - 12:00">11:00 - 12:00</option>
+                    <option value="12:00 - 13:00">12:00 - 13:00</option>
+                    <option value="13:00 - 14:00">13:00 - 14:00</option>
+                    <option value="14:00 - 15:00">14:00 - 15:00</option>
+                    <option value="15:00 - 16:00">15:00 - 16:00</option>
+                    <option value="16:00 - 17:00">16:00 - 17:00</option>
+                    <option value="17:00 - 18:00">17:00 - 18:00</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Finalizar agendamento</button>
+    </form>
+
+    {% if messages %}
+        <div class="position-fixed top-0 start-0 p-3 alert-dismissible fade show">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+              {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
